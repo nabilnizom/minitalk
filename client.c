@@ -1,4 +1,4 @@
-#include <signal.h>
+#include "minitalk.h"
 
 void	sig_to_server(int pid, char	*str)
 {
@@ -34,6 +34,8 @@ int	main(int argc, char** argv)
 	
 	i = 0;
 	server_pid = 0;
+	if (argc != 3)
+		return (1);
 	while (argv[1][i])
 	{
 		server_pid *= 10;

@@ -1,5 +1,4 @@
-#include <unistd.h>
-#include <signal.h>
+#include "minitalk.h"
 
 static void signal_handler(int sig)
 {

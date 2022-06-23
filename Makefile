@@ -1,31 +1,30 @@
-NAME = libftprintf.a
-
-SRC = $(shell find . -name ft_printf\*.c)
+SRC = server.c client.c
+OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
+all: server client
 
-$(NAME):$(SRC:.c=.o)
-	ar rcs $@ $^
+server: server.o ft_printf
+		$(CC) -o $@ $< ft_printf/libftprintf.a
+		
+client: client.o
+		$(CC) -o $@ $<
 
-bonus : $(BONUS:.c=.o)
-	ar rcs $(NAME) $^
+%o: %.c
+		$(CC) -c $(CFLAGS) $?
+		
+ft_printf:
+		make -C ft_printf
 
-so:
-	$(CC) -fPIC $(CFLAGS) $(SRC)
-	gcc -shared -o ft_printf.so $(OBJ)
+clean:
+		rm -f $(OBJ)
+		make -C ft_printf clean
 
-%.o : %.c ft_printf.h
-	$(CC) $(CFLAGS) $< -c
+fclean:
+		rm -f server client ft_printf/ft_printf.a libminitalk.a
+		
+re: clean all
 
-clean :
-	rm -f *.o
-
-fclean :
-	rm -f $(NAME) *.o
-
-re : fclean all
-
-.PHONY : all clean fclean re
+.PHONY: all ft_printf clean fclean re
