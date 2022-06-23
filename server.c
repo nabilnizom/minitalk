@@ -1,6 +1,5 @@
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <signal.h>
 
 static void signal_handler(int sig)
 {
@@ -24,7 +23,7 @@ int	main(void)
 	int	server_pid;
 	
 	server_pid = getpid();
-	printf("Server PID: %d\n", server_pid);
+	ft_printf("Server PID: %d\n", server_pid);
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
 	while(1)

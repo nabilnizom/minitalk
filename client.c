@@ -1,8 +1,4 @@
 #include <signal.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 void	sig_to_server(int pid, char	*str)
 {
