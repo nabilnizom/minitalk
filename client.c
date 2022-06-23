@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amohd-ni <amohd-ni@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/23 17:48:08 by amohd-ni          #+#    #+#             */
+/*   Updated: 2022/06/23 17:48:08 by amohd-ni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	sig_to_server(int pid, char	*str)
 {
 	int	j;
 	int	bit;
-	
+
 	j = 0;
 	while (str[j])
 	{
@@ -27,11 +39,11 @@ void	sig_to_server(int pid, char	*str)
 	}
 }
 
-int	main(int argc, char** argv)
+int	main(int argc, char **argv)
 {
 	int	i;
 	int	server_pid;
-	
+
 	i = 0;
 	server_pid = 0;
 	if (argc != 3)
